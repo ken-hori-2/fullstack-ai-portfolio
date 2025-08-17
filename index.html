@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centaurus-ken's Portfolio - Full Stack AI/ML Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    :root {
+        --primary-color: #667eea;
+        --secondary-color: #764ba2;
+        --accent-color: #f093fb;
+        --success-color: #4facfe;
+        --warning-color: #43e97b;
+        --text-dark: #2d3748;
+        --text-light: #718096;
+        --bg-light: #f7fafc;
+        --bg-white: #ffffff;
+        --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-warning: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        body {
+        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        background: var(--bg-light);
+        color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+    /* ヒーローセクション */
+    .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        color: white;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+            width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+        z-index: 1;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        z-index: 1;
+        animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(1deg);
+        }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, #fff, #e2e8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    .hero-highlight {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 25px;
+        padding: 0.6rem 1.5rem;
+        margin: 0.5rem;
+        font-weight: 500;
+        color: white;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .hero-highlight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .hero-highlight:hover::before {
+        left: 100%;
+    }
+
+    .hero-highlight:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ハイライトコンテナのスタイル */
+    .hero-highlights-container {
+            display: flex;
+        flex-wrap: wrap;
+            justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-category {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        z-index: 2;
+    }
+
+    .project-category.work {
+        background: rgba(52, 152, 219, 0.9);
+    }
+
+    .project-category.personal {
+        background: rgba(46, 204, 113, 0.9);
+    }
+
+    /* プロフィール画像 */
+    .profile-img {
+        width: 280px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        box-shadow: var(--shadow-lg);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+        transform: scale(1.05);
+    }
+
+    /* セクション共通 */
+    .section {
+        padding: 80px 0;
+        }
+        
+        .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+            text-align: center;
+        margin-bottom: 3rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* 経験セクション */
+    .experience-section {
+        background: var(--bg-white);
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-md);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .experience-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .experience-period {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .experience-description {
+        color: var(--text-dark);
+        line-height: 1.7;
+    }
+
+    .experience-highlights {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: var(--bg-light);
+        border-radius: 10px;
+    }
+
+    .experience-highlights h6 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    /* スキルカード */
+    .skill-card {
+        background: var(--bg-white);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+        border: none;
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .skill-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+    }
+
+    .skill-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .skill-icon {
+        font-size: 2.5rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.8rem;
+    }
+
+    .skill-card h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .skill-card p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .skill-level {
+            display: flex;
+        justify-content: space-between;
+        margin-top: 0.8rem;
+        font-size: 0.75rem;
+        color: var(--text-light);
+    }
+
+    .skill-bar {
+        width: 100%;
+        height: 6px;
+        background: var(--bg-light);
+        border-radius: 3px;
+        margin-top: 0.5rem;
+        overflow: hidden;
+    }
+
+    .skill-progress {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: 3px;
+        transition: width 1s ease;
+    }
+
+    /* プロジェクトカード */
+    .project-card {
+        background: var(--bg-white);
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: none;
+            overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+            position: relative;
+        }
+        
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-secondary);
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .project-img {
+        height: 200px;
+            object-fit: cover;
+        width: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-img {
+        transform: scale(1.1);
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+    }
+
+    .project-description {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .project-stats {
+            display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .project-stats span {
+        background: var(--bg-light);
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+            font-weight: 500;
+        }
+        
+    /* バッジ */
+    .badge-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .tech-badge.primary {
+        background: var(--gradient-primary);
+            color: white;
+    }
+
+    .tech-badge.secondary {
+        background: var(--gradient-secondary);
+        color: white;
+    }
+
+    .tech-badge.success {
+        background: var(--gradient-success);
+            color: white;
+        }
+        
+    .tech-badge.warning {
+        background: var(--gradient-warning);
+        color: white;
+    }
+
+    /* モーダル */
+    .modal-content {
+        border-radius: 20px;
+        border: none;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .modal-header {
+        border-bottom: none;
+        padding: 2rem 2rem 1rem;
+    }
+
+    .modal-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .modal-body {
+        padding: 0 2rem 2rem;
+    }
+
+    .project-detail h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        gap: 0.5rem;
+    }
+
+    .project-detail h4:first-child {
+        margin-top: 0;
+    }
+
+    .project-detail ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+    }
+
+    .project-detail ul li {
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+    }
+
+    .project-detail ul li::marker {
+        color: var(--primary-color);
+    }
+
+    /* ナビゲーション */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-brand {
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: var(--text-dark) !important;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: var(--primary-color) !important;
+    }
+
+    /* ボタン */
+    .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        border-radius: 25px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        border-radius: 25px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-outline-primary:hover {
+        background: var(--gradient-primary);
+        border-color: transparent;
+        transform: translateY(-2px);
+            color: white;
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline-primary i {
+        margin-right: 0.5rem;
+    }
+
+    /* アニメーション */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .project-img {
+            height: 150px;
+        }
+
+        .hero-highlights-container {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hero-highlight {
+            margin: 0.25rem;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+        }
+    }
+    .bg-gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .text-white-75 {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    .project-card.featured {
+        background: var(--bg-white);
+        backdrop-filter: none;
+        border: none;
+        box-shadow: var(--shadow-md);
+    }
+
+    .project-card.featured:hover {
+        background: var(--bg-white);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .project-stats span {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-weight: 500;
+    }
+    .section.bg-light {
+        position: relative;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .section.bg-light::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+    }
+
+    .project-category.personal {
+        background: var(--gradient-primary);
+            color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
+    }
+    .experience-card {
+        background: var(--bg-white);
+        border-radius: 20px;
+        box-shadow: var(--shadow-md);
+        border: none;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+    }
+
+    .experience-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+    }
+
+    .experience-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .experience-category.work {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+    }
+
+    .experience-content {
+        padding: 2rem;
+        padding-top: 3rem;
+    }
+
+    .experience-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .experience-period {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .experience-description {
+        color: var(--text-dark);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .experience-highlights {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: var(--bg-light);
+        border-radius: 10px;
+    }
+
+    .experience-highlights h6 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .experience-highlights ul {
+        margin-bottom: 0;
+        padding-left: 1.5rem;
+    }
+
+    .experience-highlights ul li {
+        margin-bottom: 0.5rem;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .experience-highlights ul li::marker {
+        color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Centaurus-ken</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+
+    <!-- プロジェクトモーダル -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                <div class="modal-body">
+                    <div id="modalContent"></div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                
+    <!-- ヒーローセクション -->
+    <section class="hero-section text-white" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title text-center">Full Stack AI/ML Engineer</h1>
+                    <p class="hero-subtitle text-center">
+                        LangGraph × MCP × エッジAIによる次世代AIシステムの開発者<br>
+                        UX開発からフルスタック開発まで、革新的なソリューションを探求
+                    </p>
+                    <div class="mb-4">
+                        <p class="hero-description">
+                            TWS向けエッジAI開発、AI Agentシステム開発、デモ開発、CI/CD環境構築、顧客への技術提案など幅広い業務に従事しながら、個人でもAI/MLプロジェクトに取り組んでいます。
+                            技術的な驚きだけでなく、ユーザー体験を重視した開発を心がけています。
+                            新しい技術への挑戦を楽しみ、実践的なソリューションの創出に励んでいます。
+                        </p>
+                        <p class="hero-description">
+                            特にLangGraphとMCP（Model Context Protocol）を活用したマルチエージェントシステムの開発に注力し、
+                            7つの専門エージェントが協調する高度なAIシステムを構築。音声処理、競馬予測、データ分析など
+                            多岐にわたる個人プロジェクトを通じて、フルスタック開発からAI/MLまで幅広い技術力を磨いています。
+                            知識整理も兼ねてAWS Machine Learning Engineer Associate資格を取得し、クラウドAI技術にも精通しています。
+                        </p>
+                        <p class="hero-description">
+                            <!-- 机の下活動のように使えそうなものや応用できそうなことがあれば、プロト的にざっくり実装してみて、仕事に落とし込んでいくのが得意です。
+                            企画だけとか設計だけ等どっちかだけではなく、顧客目線でも考えてプロトも開発したいという思いで、
+                            EdgeAIモデルの開発からアプリ開発、Webサーバー（Agentic AI）のデプロイ、スマホアプリ実装まで一貫して取り組んでいます。 -->
+                            机の下活動のように活用できそうなアイデアや応用の余地があるものは、まずプロトタイプとして素早く実装し、仕事に結びつけていくことを得意としています。
+企画だけ、設計だけといった一部分にとどまらず、常に顧客視点を意識しながらプロトタイプ開発にも取り組みたいという思いから、EdgeAIモデルの開発、アプリ開発、Webサーバー（Agentic AI）のデプロイ、スマートフォンアプリの実装まで、一貫して取り組んできました。
+
+                            <!-- 新しい技術やアイデアを発見した際は、すぐにプロトタイプとして実装し、業務への応用可能性を検証することを心がけています。企画・設計から実装・デプロイまで一貫して取り組み、顧客視点での価値創造を重視しています。EdgeAIモデルの開発からアプリケーション開発、Webサーバー（Agentic AI）のデプロイ、スマートフォンアプリ実装まで、エンドツーエンドでの技術実装を得意としています。 -->
+                            <!-- 新しい技術やアイデアを発見した際は、すぐにプロトタイプとして実装し、業務への応用可能性を検証することを心がけています。企画・設計から実装・デプロイまで一貫して取り組み、顧客視点での価値創造を重視しています。EdgeAIモデルの開発からアプリケーション開発、Webサーバー（Agentic AI）のデプロイ、スマートフォンアプリ実装まで、エンドツーエンドでの技術実装を得意としています。 -->
+                        </p>
+                        
+                        </div>
+                    <div class="hero-highlights-container">
+                        <span class="hero-highlight">🎯 UX開発・フルスタック開発</span>
+                        <span class="hero-highlight">🧠 AI Agent・エッジAI</span>
+                        <span class="hero-highlight">☁️ クラウド・DevOps</span>
+                    </div>
+                    <div class="mb-4 text-center">
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <div class="text-center">
+                                <a href="https://github.com/ken-hori-2" class="btn btn-outline-primary">
+                                    <i class="bi bi-github"></i> GitHub
+                                </a>
+                                <small class="d-block text-white-75 mt-2">個人開発用のGitHub</small>
+                            </div>
+                            <div class="text-center">
+                                <a href="https://www.credly.com/badges/35d63eda-fcf4-4581-b01e-9a1a2121a439" class="btn btn-outline-primary" target="_blank">
+                                    <i class="bi bi-award"></i> AWS MLA
+                                </a>
+                                <small class="d-block text-white-75 mt-2">Machine Learning Engineer Associate</small>
+                            </div>
+                            <div class="text-center">
+                                <a href="mailto:stmuymte@gmail.com" class="btn btn-outline-primary">
+                                    <i class="bi bi-envelope"></i> Contact
+                                </a>
+                                <small class="d-block text-white-75 mt-2">個人メールはこちら</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="images/profile_2025.png" alt="Centaurus-ken" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <!-- 個人開発セクション -->
+    <section class="section bg-light" id="projects">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <p class="text-center text-muted">
+                        業務とは別に、個人で取り組んでいるAI/MLプロジェクトです。<br>
+                        新しい技術の学習や実践的なスキル向上を目的として継続的に開発しています。
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- LangGraph Agentic System Hub -->
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card featured" data-project="langgraph">
+                        <div class="project-category personal">
+                            <i class="bi bi-star-fill me-1"></i>個人開発
+                        </div>
+                        <img src="images/GenerativeAgents.png" class="project-img" alt="LangGraph Agentic System Hub">
+                        <div class="project-content">
+                            <h5 class="project-title">
+                                <i class="bi bi-cpu me-2"></i>LangGraph Agentic System Hub
+                            </h5>
+                            <p class="project-description">
+                                7つの専門エージェントが協調するマルチエージェントシステム。MCPツール統合による高度なタスク実行を実現。
+                            </p>
+                            <div class="project-stats">
+                                <span><i class="bi bi-code-slash"></i> 3000+行</span>
+                                <span><i class="bi bi-diagram-3"></i> 7エージェント</span>
+                                <span><i class="bi bi-gear-wide-connected"></i> 4インターフェース</span>
+                            </div>
+                            <div class="badge-group">
+                                <span class="tech-badge primary">LangGraph</span>
+                                <span class="tech-badge secondary">MCP</span>
+                                <span class="tech-badge success">FastAPI</span>
+                                <span class="tech-badge warning">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AudioDNN -->
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card featured" data-project="audiodnn">
+                        <div class="project-category personal">
+                            <i class="bi bi-star-fill me-1"></i>個人開発
+                        </div>
+                        <img src="images/SensingEdgeAI.png" class="project-img" alt="AudioDNN">
+                        <div class="project-content">
+                            <h5 class="project-title">
+                                <i class="bi bi-soundwave me-2"></i>AudioDNN - AI音声処理総合プラットフォーム
+                            </h5>
+                            <p class="project-description">
+                                深層学習による音声処理の総合プラットフォーム。キーワード検出、音源分離、リアルタイム音声分類を統合。
+                            </p>
+                            <div class="project-stats">
+                                <span><i class="bi bi-music-note-beamed"></i> 音声処理</span>
+                                <span><i class="bi bi-lightning-charge"></i> リアルタイム</span>
+                                <span><i class="bi bi-graph-up-arrow"></i> 90%+精度</span>
+                    </div>
+                            <div class="badge-group">
+                                <span class="tech-badge primary">PyTorch</span>
+                                <span class="tech-badge secondary">CNN</span>
+                                <span class="tech-badge success">Streamlit</span>
+                                <span class="tech-badge warning">U-Net</span>
+                </div>
+            </div>
+                    </div>
+                </div>
+
+                <!-- Keiba_WS -->
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card featured" data-project="keiba">
+                        <div class="project-category personal">
+                            <i class="bi bi-star-fill me-1"></i>個人開発
+                </div>
+                        <img src="images/KeibaAI.png" class="project-img" alt="Keiba_WS">
+                        <div class="project-content">
+                            <h5 class="project-title">
+                                <i class="bi bi-graph-up-arrow me-2"></i>Keiba_WS - 競馬AI予測システム
+                            </h5>
+                            <p class="project-description">
+                                機械学習による競馬予測システム。研究段階から実用化まで、段階的な技術進化を実現。
+                            </p>
+                            <div class="project-stats">
+                                <span><i class="bi bi-currency-exchange"></i> 140%回収率</span>
+                                <span><i class="bi bi-lightning-charge"></i> リアルタイム</span>
+                                <span><i class="bi bi-arrow-up-circle"></i> 段階的進化</span>
+                            </div>
+                            <div class="badge-group">
+                                <span class="tech-badge primary">LightGBM</span>
+                                <span class="tech-badge secondary">scikit-learn</span>
+                                <span class="tech-badge success">Flask</span>
+                                <span class="tech-badge warning">Web Scraping</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kaggle -->
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card featured" data-project="kaggle">
+                        <div class="project-category personal">
+                            <i class="bi bi-star-fill me-1"></i>個人開発
+                        </div>
+                        <img src="images/DataAnalysis.png" class="project-img" alt="Kaggle">
+                        <div class="project-content">
+                            <h5 class="project-title">
+                                <i class="bi bi-pie-chart me-2"></i>Data Analysis - SIGNATE/Kaggle
+                            </h5>
+                            <p class="project-description">
+                                データ分析コンペティションへの参加と学習。SIGNATE QuestやUdemyを通じて実践的なスキル向上に取り組んでいます。
+                            </p>
+                            <div class="project-stats">
+                                <span><i class="bi bi-book"></i> 継続学習</span>
+                                <span><i class="bi bi-bar-chart-line"></i> 可視化</span>
+                                <span><i class="bi bi-gear-wide-connected"></i> パイプライン</span>
+                            </div>
+                            <div class="badge-group">
+                                <span class="tech-badge primary">pandas</span>
+                                <span class="tech-badge secondary">matplotlib</span>
+                                <span class="tech-badge success">scikit-learn</span>
+                                <span class="tech-badge warning">seaborn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        
+    <!-- 経験セクション -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <p class="text-center text-muted">
+                        社内での業務経験です。<br>
+                        エッジAI開発からAI Agentシステム、デモ開発、CI/CD環境構築まで幅広く担当しています。
+                    </p>
+                    </div>
+            </div>
+            <div class="row">
+                <!-- 次世代TWS向けSoC外販促進 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-category work">
+                            <i class="bi bi-briefcase me-1"></i>業務経験
+                        </div>
+                        <div class="experience-content">
+                            <h5 class="experience-title">
+                                <i class="bi bi-cpu me-2"></i>次世代TWS向けSoC外販促進のための付加価値探求
+                            </h5>
+                            <p class="experience-period">2023/10 - 2025/6（継続中）</p>
+                            <p class="experience-description">
+                                低電力×SensingEdgeAIを強みとした潜在意識下のLLM Communicationコンセプトの立案からデモ開発まで経験。周辺部署やHCD, A11yチームと意見交換しながらブレストを重ね、EdgeAIモデル開発、組み込みSW開発、AWSによるサーバー開発、AI Agentアプリケーション開発・実装及びデプロイ、モバイルアプリ開発を一貫して担当。
+                            </p>
+                            <div class="experience-highlights">
+                                <h6><i class="bi bi-check-circle me-1"></i>主要成果</h6>
+                                <ul>
+                                    <li><strong>事業計画への採用</strong>: 2部署の事業計画にコンセプトが採用</li>
+                                    <li><strong>技術提案経験</strong>: 戦略企画部隊、米国IT企業、海外販社への提案</li>
+                                    <li><strong>技術定義論</strong>: エンジニア向けの技術的な議論や実現可能性の検証</li>
+                                    <li><strong>常時センシング×AI Agent</strong>: センシングコラボレーションシステムのデモ開発</li>
+                                    <li><strong>マルチエージェント化</strong>: LLM/SLM分離、エージェント特化ツール、RAG・リフレクション、ReAct+データモデル制御による高速・安定な応答</li>
+                                    <li><strong>独自ツール開発</strong>: MCP登場前のSpotify、Outlook、GoogleMaps、Yahoo!経路検索、HotPepper等のWeb APIラッパー実装</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                <!-- FAE -->
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-category work">
+                            <i class="bi bi-briefcase me-1"></i>業務経験
+                        </div>
+                        <div class="experience-content">
+                            <h5 class="experience-title">
+                                <i class="bi bi-globe me-2"></i>FAE（Field Application Engineer）
+                            </h5>
+                            <p class="experience-period">2024/4 - 2025/3（継続中）</p>
+                            <p class="experience-description">
+                                センシングエッジAI（行動、環境音）デモを国内2社、海外2社、社内関連部署、海外販社に実施。海外販社との英語での定例会議のファシリテーターを月に2回(隔週)で2拠点(アメリカ, シンガポール)担当し、担当販社からの質疑応答にメールやチャット、会議で月に2,3回対応。
+                            </p>
+                            <div class="experience-highlights">
+                                <h6><i class="bi bi-check-circle me-1"></i>主要成果</h6>
+                                <ul>
+                                    <li><strong>国際的な顧客対応</strong>: 国内2社、海外2社への技術デモ実施</li>
+                                    <li><strong>グローバルファシリテーション</strong>: アメリカ・シンガポールの2拠点で隔週定例会議をファシリテート</li>
+                                    <li><strong>技術文書作成</strong>: 顧客向けアプリケーションレイヤーのドキュメント作成</li>
+                                    <li><strong>継続的なサポート</strong>: 月2-3回の質疑応答対応で顧客との信頼関係構築</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                <!-- SDK開発効率化 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-category work">
+                            <i class="bi bi-briefcase me-1"></i>業務経験
+                        </div>
+                        <div class="experience-content">
+                            <h5 class="experience-title">
+                                <i class="bi bi-gear-wide-connected me-2"></i>SDK開発効率化のためのCI/CD環境構築
+                            </h5>
+                            <p class="experience-period">2025/1 - 現在</p>
+                            <p class="experience-description">
+                                Github Actions・Dockerを活用したビルド自動化や用途に合わせたパッケージ生成の自動化。Visual Studioなどのライセンスを用いたビルドのためにセルフホステッドランナー構築、workflowに実装。PRをトリガーにしたSQA自動化を実装中。
+                            </p>
+                            <div class="experience-highlights">
+                                <h6><i class="bi bi-check-circle me-1"></i>主要成果</h6>
+                                <ul>
+                                    <li><strong>ビルド自動化</strong>: Github Actions・Dockerを活用した効率的なビルドプロセス構築</li>
+                                    <li><strong>パッケージ生成自動化</strong>: 用途に応じたパッケージの自動生成システム</li>
+                                    <li><strong>セルフホステッドランナー</strong>: Visual Studioライセンス対応のビルド環境構築</li>
+                                    <li><strong>SQA自動化</strong>: PRをトリガーとした自動テスト環境の構築</li>
+                                    <li><strong>開発効率向上</strong>: 手動作業の自動化により開発サイクルの短縮を実現</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SQA自動化 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="experience-card">
+                        <div class="experience-category work">
+                            <i class="bi bi-briefcase me-1"></i>業務経験
+                        </div>
+                        <div class="experience-content">
+                            <h5 class="experience-title">
+                                <i class="bi bi-shield-check me-2"></i>SQA及びSQA自動化環境開発
+                            </h5>
+                            <p class="experience-period">2024/9 - 現在</p>
+                            <p class="experience-description">
+                                SDKリリースのたびにSQAを担当。TWSと対向機（スマホ、ドングル）のテスト自動化検討から開発。社内テスト自動化チームと会話しながら方針決定し、保守性や可動性を考慮した自動化環境構築。AI Agent×MCPサーバーによる自然言語ベースでのテストケース作成環境実装。
+                            </p>
+                            <div class="experience-highlights">
+                                <h6><i class="bi bi-check-circle me-1"></i>主要成果</h6>
+                                <ul>
+                                    <li><strong>バイブコーディング事例作成</strong>: 3日でプロトタイプを実装し、部内でLLM活用開発の事例として共有</li>
+                                    <li><strong>周囲への導入支援</strong>: 自部署及び隣部署からバイブコーディングの導入支援を依頼され、知見共有を実施</li>
+                                    <li><strong>MCPとの連携</strong>: AI Agent×MCPサーバーによる自然言語ベースでのテストケース作成環境を実装</li>
+                                    <li><strong>開発効率化</strong>: 検証リストから自動でテストケースを作成できるシステムを構築</li>
+                                    <li><strong>迅速な方針決定</strong>: プロトタイプのデモにより、迅速な技術検討と方針決定に貢献</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        
+    <!-- スキルセクション -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-cpu-fill skill-icon"></i>
+                        <h5 class="mb-3">AI/ML</h5>
+                        <p class="text-muted">
+                            LangChain, LangGraph, OpenAI, Anthropic<br>
+                            PyTorch, TensorFlow, scikit-learn<br>
+                            nnabla, NNC<br>
+                            <small>マルチエージェント開発、LLMアプリケーション</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Advanced<br><small>実務応用</small></span>
+                            <span>85%</span>
+            </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+        </div>
+    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-server skill-icon"></i>
+                        <h5 class="mb-3">Backend</h5>
+                        <p class="text-muted">
+                            Python, Django, FastAPI, Flask<br>
+                            3層サーバー(Web, App, DB)<br>
+                            Web API (Spotify, YouTube, Google Maps, HotPepper, etc...)<br>
+                            <small>RESTful API、マイクロサービス、API統合</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Advanced<br><small>実務応用</small></span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-window-desktop skill-icon"></i>
+                        <h5 class="mb-3">Frontend</h5>
+                        <p class="text-muted">
+                            React, TypeScript, HTML5, CSS3<br>
+                            Bootstrap, Tailwind CSS<br>
+                            <small>UX開発、レスポンシブデザイン</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Beginner<br><small>趣味レベル</small></span>
+                            <span>55%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 55%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-phone skill-icon"></i>
+                        <h5 class="mb-3">Mobile</h5>
+                        <p class="text-muted">
+                            Java, Kotlin, Android<br>
+                            Android Studio, React Native<br>
+                            <small>ネイティブアプリ、クロスプラットフォーム</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Intermediate<br><small>実務経験</small></span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-gear-wide-connected skill-icon"></i>
+                        <h5 class="mb-3">Embedded</h5>
+                        <p class="text-muted">
+                            C++, C, 組み込み開発<br>
+                            FW開発、ドライバー開発<br>
+                            <small>エッジAI、IoT、リアルタイム処理</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Intermediate<br><small>実務経験</small></span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-cloud-arrow-up skill-icon"></i>
+                        <h5 class="mb-3">Cloud & DevOps</h5>
+                        <p class="text-muted">
+                            AWS (EC2, S3, Lambda, RDS, ELB, API Gateway, VPC, Route53, etc...)<br>
+                            Docker, GitHub Actions, CI/CD<br>
+                            <small>インフラ自動化、セキュリティ、スケーラビリティ</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Intermediate<br><small>実務応用</small></span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンタクトセクション -->
+    <section class="section bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <p class="lead mb-4">
+                            技術への情熱と継続的な学習意欲を原動力に、次世代AIシステムの開発に取り組んでいます。<br>
+                            業務ではTWS向けエッジAI開発からAI Agentシステム、デモ開発、CI/CD環境構築まで幅広く担当し、<br>
+                            休日も図書館で最新技術を学び、個人プロジェクトを通じて実践的なスキルを磨いています。<br>
+                            知識のギャップを好奇心とモチベーションで埋めながら、顧客価値の創造と革新的なソリューションの開発に貢献したいと考えています。
+                        </p>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-center align-items-center gap-3">
+                                <div class="text-center">
+                                    <a href="https://github.com/ken-hori-2" class="btn btn-outline-primary">
+                                        <i class="bi bi-github"></i> GitHub
+                                    </a>
+                                    <small class="d-block text-white-75 mt-2">個人開発用のGitHub</small>
+                                </div>
+                                <div class="text-center">
+                                    <a href="https://www.credly.com/badges/35d63eda-fcf4-4581-b01e-9a1a2121a439" class="btn btn-outline-primary" target="_blank">
+                                        <i class="bi bi-award"></i> AWS MLA
+                                    </a>
+                                    <small class="d-block text-white-75 mt-2">Machine Learning Engineer Associate</small>
+                                </div>
+                                <div class="text-center">
+                                    <a href="mailto:stmuymte@gmail.com" class="btn btn-outline-primary">
+                                        <i class="bi bi-envelope"></i> Contact
+                                </a>
+                                <small class="d-block text-white-75 mt-2">個人メールはこちら</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Centaurus-ken. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // プロジェクトデータ
+        const projectsData = {
+        langgraph: {
+            title: "LangGraph Agentic System Hub",
+                description: `
+                <div class="project-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4><i class="bi bi-robot"></i>概要</h4>
+                            <p>LangGraphとMCP（Model Context Protocol）ツールを活用したマルチエージェント・マルチインターフェースフレームワーク。7つの専門エージェントが協調して複雑なタスクを実行します。</p>
+                            
+                            <h4><i class="bi bi-gear"></i>主な機能</h4>
+                            <ul>
+                                <li>7つの専門エージェント（スケジュール、音楽、レストラン、動画、旅行、数学、リサーチ）</li>
+                                <li>自動エージェント選択と協調動作</li>
+                                <li>CLI、GUI、API、MCP統合の多様なインターフェース</li>
+                                <li>OpenAI GPT-4o、Anthropic Claude-3シリーズ対応</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-code-slash"></i>技術スタック</h4>
+                            <ul>
+                                <li>LangGraph（エージェントオーケストレーション）</li>
+                                <li>MCP（Model Context Protocol）ツール統合</li>
+                                <li>FastAPI（RESTful API）</li>
+                                <li>Streamlit（Webインターフェース）</li>
+                                <li>Docker（コンテナ化）</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-trophy"></i>成果</h4>
+                            <ul>
+                                <li>複雑なタスクの自動分解と最適なエージェント選択</li>
+                                <li>スケーラブルなマルチエージェントアーキテクチャの実現</li>
+                                <li>3000行以上のコードによる包括的なシステム構築</li>
+                                <li>実用的なユースケース（音楽検索、レストラン検索、スケジュール管理）の実装</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-links mb-4">
+                                <a href="https://github.com/ken-hori-2/langgraph-agentic-system-hub" class="btn btn-primary w-100 mb-2" target="_blank">
+                                    <i class="bi bi-github me-2"></i>GitHub リポジトリ
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('langgraph-demo1')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ1: 居酒屋検索×音楽推薦
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('langgraph-demo2')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ2: 動画検索×天気情報
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            `,
+            image: "images/GenerativeAgents.png"
+        },
+        audiodnn: {
+            title: "AudioDNN - AI音声処理総合プラットフォーム",
+                description: `
+                <div class="project-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4><i class="bi bi-music-note-beamed"></i>概要</h4>
+                            <p>深層学習と音声処理技術を組み合わせた総合的な研究・開発プラットフォーム。キーワード検出、音源分離、リアルタイム音声分類など、様々な音声AIタスクを統合的に提供します。</p>
+                            
+                            <h4><i class="bi bi-gear"></i>主な機能</h4>
+                            <ul>
+                                <li>リアルタイム音声分類システム（90%+精度）</li>
+                                <li>YouTube音源分離システム（SDR 6-7dB）</li>
+                                <li>BC-ResNetによるキーワード検出（98.7%精度）</li>
+                                <li>U-Netによる音楽音源分離（12-46倍速処理）</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-code-slash"></i>技術スタック</h4>
+                            <ul>
+                                <li>PyTorch（深層学習フレームワーク）</li>
+                                <li>CNN、BC-ResNet、U-Net（モデルアーキテクチャ）</li>
+                                <li>Streamlit（Webアプリケーション）</li>
+                                <li>librosa（音声処理）</li>
+                                <li>FFmpeg（音声変換）</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-trophy"></i>成果</h4>
+                            <ul>
+                                <li>4つの異なる音声処理プロジェクトの統合プラットフォーム</li>
+                                <li>リアルタイム処理による実用的な音声AIシステム</li>
+                                <li>高精度な音声分類・分離技術の実装</li>
+                                <li>美しいWebインターフェースによる直感的な操作</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-links mb-4">
+                                <a href="https://github.com/ken-hori-2/AudioDNN" class="btn btn-primary w-100 mb-2" target="_blank">
+                                    <i class="bi bi-github me-2"></i>GitHub リポジトリ
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('audiodnn-demo1')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ1: リアルタイム音声分類
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('audiodnn-demo2')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ2: YouTube音源分離
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            `,
+            image: "images/SensingEdgeAI.png"
+        },
+        keiba: {
+            title: "Keiba_WS - 競馬AI予測システム",
+                description: `
+                <div class="project-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4><i class="bi bi-trophy"></i>概要</h4>
+                            <p>機械学習を活用した競馬予測システムの研究開発プロジェクト。研究段階のアンサンブル学習アプローチ（v1）から、リアルタイムデータスクレイピングによる実用的予測システム（v2）、そして本格的なWebアプリケーション（app）まで、段階的な技術進化と実用化を記録しています。</p>
+                            
+                            <h4><i class="bi bi-gear"></i>主な機能</h4>
+                            <ul>
+                                <li>アンサンブル学習システム（AUC 0.8054, 精度 79.7%）</li>
+                                <li>リアルタイム予測システム（回収率140%達成）</li>
+                                <li>Webアプリケーション（本格運用対応）</li>
+                                <li>自動データスクレイピングと前処理</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-code-slash"></i>技術スタック</h4>
+                            <ul>
+                                <li>LightGBM、RandomForest（機械学習モデル）</li>
+                                <li>scikit-learn（データ処理・分析）</li>
+                                <li>Flask/Django（Webフレームワーク）</li>
+                                <li>BeautifulSoup4（Webスクレイピング）</li>
+                                <li>React（フロントエンド）</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-trophy"></i>成果</h4>
+                            <ul>
+                                <li>研究から実用化までの段階的な技術進化の実現</li>
+                                <li>140%の回収率を達成する実用的な予測システム</li>
+                                <li>リアルタイムデータ処理による当日レース分析</li>
+                                <li>本格的なWebアプリケーションによるユーザビリティ向上</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-links mb-4">
+                                <a href="https://github.com/ken-hori-2/Keiba_WS" class="btn btn-primary w-100 mb-2" target="_blank">
+                                    <i class="bi bi-github me-2"></i>GitHub リポジトリ
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('keiba-demo')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ1: リアルタイム予測
+                                </a>
+                                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="showDemo('keiba-train')">
+                                    <i class="bi bi-play-circle me-2"></i>デモ2: 学習プロセス
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            `,
+            image: "images/KeibaAI.png"
+        },
+        kaggle: {
+            title: "Data Analysis - SIGNATE/Kaggle",
+            description: `
+                <div class="project-detail">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4><i class="bi bi-bar-chart"></i>概要</h4>
+                            <p>データ分析コンペティションへの参加や個人開発を通じて、実践的なデータ分析スキルと機械学習モデル開発能力を磨いています。SIGNATE QuestやUdemyでの学習を通じて、効果的なデータ可視化手法と再現性の高い分析パイプラインの構築に取り組んでいます。</p>
+                            
+                            <h4><i class="bi bi-gear"></i>主な活動</h4>
+                            <ul>
+                                <li>SIGNATE/Kaggleコンペティションへの参加</li>
+                                <li>SIGNATE Questでの実践的な学習</li>
+                                <li>Udemyでのデータサイエンス講座受講</li>
+                                <li>探索的データ分析（EDA）と可視化</li>
+                                <li>機械学習モデルの開発と最適化</li>
+                                <li>特徴量エンジニアリングとハイパーパラメータチューニング</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-code-slash"></i>技術スタック</h4>
+                            <ul>
+                                <li>Python（データ分析・機械学習）</li>
+                                <li>pandas、numpy（データ処理）</li>
+                                <li>scikit-learn（機械学習）</li>
+                                <li>matplotlib、seaborn（可視化）</li>
+                                <li>Jupyter Notebook（分析環境）</li>
+                            </ul>
+                            
+                            <h4><i class="bi bi-trophy"></i>成果</h4>
+                            <ul>
+                                <li>継続的な学習による実践的なデータ分析スキルの習得</li>
+                                <li>効果的なデータ可視化手法の確立</li>
+                                <li>再現性の高い分析パイプラインの構築</li>
+                                <li>最新のデータサイエンス手法への理解</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-links mb-4">
+                                <a href="https://github.com/ken-hori-2/Kaggle_ws" class="btn btn-primary w-100 mb-2" target="_blank">
+                                    <i class="bi bi-github me-2"></i>GitHub リポジトリ
+                                </a>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            `,
+            image: "images/DataAnalysis.png"
+        }
+    };
+
+    // モーダル関連の処理
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectCards = document.querySelectorAll('.project-card');
+        const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+        const modalTitle = document.getElementById('projectModalLabel');
+        const modalContent = document.getElementById('modalContent');
+        
+        projectCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const project = projectsData[projectId];
+                
+                if (project) {
+                    modalTitle.textContent = project.title;
+                modalContent.innerHTML = `
+                        <img src="${project.image}" class="project-img mb-3" alt="${project.title}" style="width: 100%; max-width: 400px; border-radius: 15px;">
+                        ${project.description}
+                    `;
+                    modal.show();
+                }
+            });
+        });
+        
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // アニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card, .experience-card').forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    // デモ動画表示機能
+    function showDemo(demoId) {
+        const demos = {
+            // LangGraph Agentic System Hub
+            'langgraph-demo1': {
+                title: "LangGraph Agentic System Hub - 居酒屋検索×音楽推薦デモ",
+                url: "https://github.com/user-attachments/assets/90717585-5e53-492d-a558-035fe871605c"
+            },
+            'langgraph-demo2': {
+                title: "LangGraph Agentic System Hub - 動画検索×天気情報デモ",
+                url: "https://github.com/user-attachments/assets/d4fe73d3-727b-487c-9826-a6a18e4b2a79"
+            },
+            // AudioDNN
+            'audiodnn-demo1': {
+                title: "AudioDNN - リアルタイム音声分類デモ",
+                url: "https://github.com/user-attachments/assets/8225f857-8da6-4efd-952c-875275e76db8"
+            },
+            'audiodnn-demo2': {
+                title: "AudioDNN - YouTube音源分離デモ",
+                url: "https://github.com/user-attachments/assets/04fdc669-24c3-49f3-bc68-faada70230f9"
+            },
+            // Keiba_WS
+            'keiba-demo': {
+                title: "Keiba_WS - 競馬AI予測システムデモ",
+                url: "https://github.com/user-attachments/assets/43d6ecd1-c99d-43d8-b520-680d53b451ef"
+            },
+            'keiba-train': {
+                title: "Keiba_WS - 学習プロセスデモ",
+                url: "https://github.com/user-attachments/assets/8307b18a-9b41-4f93-adeb-17d992e11cdb"
+            }
+        };
+
+        const demo = demos[demoId];
+        if (demo) {
+            window.open(demo.url, '_blank');
+        } else {
+            console.log('Demo not found:', demoId);
+        }
+    }
+    </script>
+</body>
+</html>
