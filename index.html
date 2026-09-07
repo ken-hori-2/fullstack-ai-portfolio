@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centaurus-ken's Portfolio - Software Engineer</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <title>Centaurus-ken's Portfolio - Software Engineer / 3DCG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
     :root {
@@ -342,6 +344,7 @@
         transition: all 0.3s ease;
         height: 100%;
             position: relative;
+        cursor: pointer;
         }
         
     .project-card::before {
@@ -352,6 +355,14 @@
         right: 0;
         height: 4px;
         background: var(--gradient-secondary);
+        z-index: 4;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover::before {
+        opacity: 0;
     }
 
     .project-card:hover {
@@ -390,6 +401,8 @@
     .project-stats {
             display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.35rem;
         margin-bottom: 1rem;
         font-size: 0.9rem;
         color: var(--text-light);
@@ -658,6 +671,171 @@
         font-weight: 600;
         box-shadow: var(--shadow-sm);
     }
+
+    #cg,
+    #projects,
+    #about {
+        scroll-margin-top: 88px;
+    }
+
+    .project-category.cg {
+        background: linear-gradient(135deg, #1a1a2e 0%, #c0392b 100%);
+        color: white;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .project-card.cg .cg-thumb {
+        position: relative;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        background: #0b0d12;
+        overflow: hidden;
+    }
+
+    .project-card.cg .cg-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card.cg:hover .cg-thumb img {
+        transform: scale(1.06);
+    }
+
+    .cg-play-badge {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3rem;
+        opacity: 0.92;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+        pointer-events: none;
+    }
+
+    .cg-video-grid {
+        display: grid;
+        grid-template-columns: minmax(140px, 220px) 1fr;
+        gap: 0.75rem;
+        align-items: start;
+        margin-bottom: 1.25rem;
+    }
+
+    .cg-video-grid.portrait-only,
+    .cg-video-grid.shorts {
+        grid-template-columns: minmax(200px, 280px);
+        justify-content: start;
+    }
+
+    .cg-video-grid.dual {
+        grid-template-columns: repeat(2, minmax(160px, 280px));
+    }
+
+    .cg-video-frame {
+        background: #0b0d12;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .cg-yt {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        background: #000;
+    }
+
+    .cg-yt iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .cg-video-label {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        padding: 0.45rem 0.7rem 0.6rem;
+    }
+
+    .cg-stills {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+        margin: 0.5rem 0 1.25rem;
+    }
+
+    .cg-stills a {
+        display: block;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #0b0d12;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .cg-stills img {
+        height: auto;
+        width: 100%;
+        max-width: none;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        transition: transform 0.25s ease;
+    }
+
+    .cg-stills a:hover img {
+        transform: scale(1.04);
+    }
+
+    .cg-process ol {
+        padding-left: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cg-process li {
+        margin-bottom: 0.7rem;
+        color: var(--text-light);
+    }
+
+    .cg-process li strong {
+        color: var(--text-dark);
+    }
+
+    .cg-note {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        background: var(--bg-light);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .project-card.cg .cg-thumb {
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .cg-video-grid,
+        .cg-video-grid.portrait-only,
+        .cg-video-grid.shorts,
+        .cg-video-grid.dual {
+            grid-template-columns: minmax(180px, 260px);
+            justify-content: center;
+        }
+
+        .cg-stills {
+            grid-template-columns: 1fr;
+        }
+    }
     .experience-card {
         background: var(--bg-white);
         border-radius: 20px;
@@ -770,6 +948,9 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#cg">3DCG</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#projects">Personal</a>
                     </li>
                     <li class="nav-item">
@@ -788,7 +969,7 @@
 
     <!-- プロジェクトモーダル -->
     <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="projectModalLabel"></h5>
@@ -806,23 +987,27 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <h1 class="hero-title text-center">Software Engineer</h1>
+                    <h1 class="hero-title text-center">Software Engineer / 3DCG</h1>
                     <p class="hero-subtitle text-center">
-                        LangGraph × MCP × エッジAI × iOSアプリで、App Store 公開（AXiV）からエージェント・音声AIまで革新的なソリューションを探求しています。
+                        エッジAI・AI Agent・iOS と、Blender のアクションショット。企画から実装、ショットの仕上げまで一貫して担当します。
                     </p>
                     <div class="mb-4">
                         <p class="hero-description">
-                            業務ではTWS向けエッジAI、AI Agent、デモ開発、CI/CD、技術提案を担当。個人ではApp Store 公開の「AXiV」や「RendVu」（音声クローン・TTS）など、技術とUXの両立を意識した開発に取り組んでいます。
+                            業務では TWS 向けエッジAI、AI Agent、デモ開発、CI/CD、技術提案を担当。個人では App Store 公開の「AXiV」や「RendVu」（音声クローン・TTS）など、技術と UX の両立を意識した開発に取り組んでいます。
                         </p>
                         <p class="hero-description">
-                            LangGraph×MCPによるマルチエージェントシステム、写真から音声付きスタンプまで一気通貫のiOSアプリ、音声処理・競馬予測・データ分析など、モバイルからAI/MLまで幅広く実践。AWS Machine Learning Engineer Associate資格保有。
+                            3DCG は Blender / EEVEE / 24fps。Layout・Animation・FX・Camera・Lighting まで一人で担当し、同一セットで Ground Battle と Web-Swing を 9:16 / 16:9 で撮り分けています。
                         </p>
                         <p class="hero-description">
-                            活用できそうなアイデアはまずプロトタイプで形にし、業務に落とし込むことを得意としています。企画・設計だけでなく顧客視点で実装まで一貫して、エッジAI・アプリ・Webサーバー（AI Agent）まで手がけてきました。
+                            LangGraph × MCP のマルチエージェント、写真から音声付きスタンプまで一気通貫の iOS アプリ、音声処理やデータ分析まで、モバイルから AI/ML まで実践。AWS Machine Learning Engineer Associate を保有。
+                        </p>
+                        <p class="hero-description">
+                            使えそうなアイデアはまずプロトタイプにし、業務に落とすことを得意としています。設計だけでなく顧客視点で実装まで、エッジAI・アプリ・Web（AI Agent）まで手がけてきました。
                         </p>
                         
                         </div>
                     <div class="hero-highlights-container">
+                        <span class="hero-highlight">🎬 3DCG・Blender / EEVEE</span>
                         <span class="hero-highlight">🎯 UX開発・フルスタック開発</span>
                         <span class="hero-highlight"><i class="bi bi-apple me-1"></i>iOSアプリ・App Store 公開</span>
                         <span class="hero-highlight">🧠 AI Agent・エッジAI</span>
@@ -871,12 +1056,52 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
                     <p class="text-center text-muted">
-                        App Store 公開アプリ（AXiV）をはじめ、AI/ML・音声処理・iOSアプリ・エージェントシステムなど、個人で取り組んでいるプロジェクトです。<br>
-                        新しい技術の学習と実践的なスキル向上を目的に継続的に開発しています。
+                        Blender のアクションカットから、App Store 公開の「AXiV」、AI/ML・音声処理・エージェントまで、個人で続けている制作をまとめています。<br>
+                        3DCG は Layout から FX・カメラ・仕上げまで、アプリは企画から公開まで、過程が追える形にしています。
                     </p>
                 </div>
             </div>
             <div class="row">
+                <!-- Gundam × Spider-Man -->
+                <div class="col-lg-6 mb-4" id="cg">
+                    <div class="project-card featured cg" data-project="actioncut">
+                        <div class="project-category cg">
+                            <i class="bi bi-camera-reels me-1"></i>3DCG
+                        </div>
+                        <div class="cg-thumb">
+                            <img src="images/cg/gundam-beam-saber.png" alt="RX-78 vs ザクII アクションカット">
+                            <span class="cg-play-badge"><i class="bi bi-play-circle-fill"></i></span>
+                        </div>
+                        <div class="project-content">
+                            <h5 class="project-title">
+                                <i class="bi bi-lightning me-2"></i>Gundam × Spider-Man — Action Cut
+                            </h5>
+                            <p class="project-description">
+                                廃墟の夜間セットで、近接戦闘とウェブスイングを同じアセット・ライティングで撮ったアクションカット。レイアウトからアニメーション、切断FX、カメラ、仕上げまで一貫して担当。
+                            </p>
+                            <div class="project-stats">
+                                <span><i class="bi bi-camera-video"></i> EEVEE / 24fps</span>
+                                <span><i class="bi bi-aspect-ratio"></i> 9:16 + 16:9</span>
+                                <span><i class="bi bi-sliders"></i> Layout / FX / Camera</span>
+                            </div>
+                            <div class="badge-group">
+                                <span class="tech-badge primary">Blender 3.2</span>
+                                <span class="tech-badge secondary">EEVEE</span>
+                                <span class="tech-badge success">NLA / IK</span>
+                                <span class="tech-badge warning">ffmpeg</span>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <a href="https://www.youtube.com/shorts/YGdowI_XNU8" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener" onclick="event.stopPropagation();">
+                                    <i class="bi bi-youtube me-1"></i>Ground Battle
+                                </a>
+                                <a href="https://www.youtube.com/shorts/VFIDVOYgz9k" class="btn btn-outline-danger btn-sm" target="_blank" rel="noopener" onclick="event.stopPropagation();">
+                                    <i class="bi bi-youtube me-1"></i>Web-Swing
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- PersonaStamp Studio -->
                 <div class="col-lg-6 mb-4">
                     <div class="project-card featured" data-project="personastamp">
@@ -1162,7 +1387,26 @@
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="row">
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="skill-card text-center">
+                        <i class="bi bi-camera-reels skill-icon"></i>
+                        <h5 class="mb-3">3DCG</h5>
+                        <p class="text-muted">
+                            Blender, EEVEE, NLA, IK<br>
+                            アクション撮影（縦／横・手ブレ）<br>
+                            切断・火花・カメラワーク<br>
+                            <small>ショット設計から見せ用まで</small>
+                        </p>
+                        <div class="skill-level">
+                            <span>Personal<br><small>個人制作</small></span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-cpu-fill skill-icon"></i>
                         <h5 class="mb-3">AI/ML</h5>
@@ -1181,7 +1425,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-server skill-icon"></i>
                         <h5 class="mb-3">Backend</h5>
@@ -1200,7 +1444,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-window-desktop skill-icon"></i>
                         <h5 class="mb-3">Frontend</h5>
@@ -1218,7 +1462,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-phone skill-icon"></i>
                         <h5 class="mb-3">Mobile / iOS</h5>
@@ -1238,7 +1482,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-gear-wide-connected skill-icon"></i>
                         <h5 class="mb-3">Embedded</h5>
@@ -1256,7 +1500,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
                     <div class="skill-card text-center">
                         <i class="bi bi-cloud-arrow-up skill-icon"></i>
                         <h5 class="mb-3">Cloud & DevOps</h5>
@@ -1339,6 +1583,124 @@
     <script>
     // プロジェクトデータ
         const projectsData = {
+        actioncut: {
+            title: "Gundam × Spider-Man — Action Cut",
+            skipHeroImage: true,
+            image: "images/cg/gundam-beam-saber.png",
+            description: `
+                <div class="project-detail">
+                    <div class="cg-video-grid shorts dual">
+                        <div class="cg-video-frame">
+                            <div class="cg-yt" data-yt="YGdowI_XNU8" data-title="RX-78-2 vs Char's Zaku II Ground Battle (Blender)"></div>
+                            <div class="cg-video-label">Ground Battle　9:16　beauty → rewind → viewport</div>
+                        </div>
+                        <div class="cg-video-frame">
+                            <div class="cg-yt" data-yt="VFIDVOYgz9k" data-title="Spider-Man NYC Web-Swing (Blender)"></div>
+                            <div class="cg-video-label">Web-Swing　9:16　tracking cam</div>
+                        </div>
+                    </div>
+                    <div class="cg-stills">
+                        <a href="images/cg/gundam-vs-zaku.png" target="_blank" rel="noopener">
+                            <img src="images/cg/gundam-vs-zaku.png" alt="RX-78 vs ザクII — ヒートホーク振り上げ">
+                        </a>
+                        <a href="images/cg/zaku-armcut-sparks.png" target="_blank" rel="noopener">
+                            <img src="images/cg/zaku-armcut-sparks.png" alt="ザクII 腕切断 — 火花">
+                        </a>
+                        <a href="images/cg/gundam-beam-saber.png" target="_blank" rel="noopener">
+                            <img src="images/cg/gundam-beam-saber.png" alt="RX-78 ビームサーベル — ザク腕切断後">
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4><i class="bi bi-film"></i>Overview</h4>
+                            <p>Blender 3.2 / EEVEE / <strong>24fps</strong>。同一の廃墟ナイトセットで、<strong>Ground Battle</strong>（RX-78-2 vs ザクII）と<strong>Web-Swing</strong>（スパイダーマン）を撮り分けた個人制作です。ショット設計、レイアウト、アニメーション、FX、カメラ、ライティング、仕上げまで一人で担当しています。</p>
+                            <p>配信用の縦（1080×1920）と映画画角の横（1920×1080）を、同じキャラ・ボリューム・ライトで出力。見せ用リールは beauty を最後まで流したあと巻き戻し、ビューポートへディゾルブして、裏のリグまで見せる構成です。</p>
+
+                            <h4><i class="bi bi-person-badge"></i>Role / Pipeline</h4>
+                            <ul>
+                                <li><strong>Role</strong> — Layout / Animation / FX / Camera / Lighting / Comp</li>
+                                <li><strong>Renderer</strong> — EEVEE（TAA 64、ブルーム、ボリュームライト）</li>
+                                <li><strong>Deliverable</strong> — Shorts（9:16）＋ 横画角（16:9）、H.264、効果音 mux</li>
+                            </ul>
+
+                            <h4><i class="bi bi-lightning"></i>Shot 01 — Ground Battle</h4>
+                            <p>約10.8秒（1–260F）。ヒートホークの振り上げからキック、左腕切断、胴切断までの近接カット。ローアングルの手ブレカメラでスケール感を出しています。</p>
+                            <ul>
+                                <li><strong>1–56F</strong> — ホーク振り上げ</li>
+                                <li><strong>56–94F</strong> — キックでのけぞり</li>
+                                <li><strong>95F</strong> — 左腕切断。破片落下と火花</li>
+                                <li><strong>175F</strong> — 胴切断。上半身落下、下半身は切り株として残す</li>
+                            </ul>
+
+                            <h4><i class="bi bi-geo"></i>Shot 02 — Web-Swing</h4>
+                            <p>約5.5秒（1–132F）。NYC を定長の振り子で振り、着地後にカメラへウェブを撃つカット。縦はスマホ想定の追従、横は引き／ロー／並走／後方／クレーンをマーカー切替。</p>
+                            <ul>
+                                <li><strong>1–18F</strong> — エイムから射出。糸が足場まで届く</li>
+                                <li><strong>18–32F</strong> — リールイン。接地を離れる</li>
+                                <li><strong>32–68F</strong> — 振り子。最下点を経て反対側へ</li>
+                                <li><strong>107–125F</strong> — 着地、カメラへウェブ、レンズ覆い</li>
+                            </ul>
+
+                            <h4><i class="bi bi-sliders"></i>Approach</h4>
+                            <ul>
+                                <li><strong>切断</strong> — リグは分割しない。ベイクメッシュの差し替えで切れを表現し、破片はボーンの子にしない</li>
+                                <li><strong>火花 / ウェブ</strong> — パーティクルではなくベジェ＋フック。長さ・着弾・重力をキーで制御</li>
+                                <li><strong>体の軌道</strong> — ウェブは定長振り子。弦で短縮すると直線移動に見えるため、弧の上を手キー</li>
+                                <li><strong>カメラ</strong> — 親で画角、子で手ブレ。縦は同じ波形の 0.4 倍にして寄りでの暴れを抑える</li>
+                                <li><strong>大気</strong> — ワールド霧ではなく足元とキャラ周辺の局所ボリューム</li>
+                            </ul>
+
+                            <h4><i class="bi bi-code-slash"></i>Tools</h4>
+                            <ul>
+                                <li>Blender 3.2.2 / EEVEE</li>
+                                <li>NLA、IK（HandIK / FootIK / Root）、Mixamo リグ</li>
+                                <li>オブジェクトキーによるメッシュ差し替え、ベジェ FX、局所ボリューム</li>
+                                <li>ffmpeg（H.264、mux、beauty → rewind → viewport のつなぎ）</li>
+                            </ul>
+
+                            <h4><i class="bi bi-lightbulb"></i>工夫点・苦労したこと</h4>
+                            <div class="cg-process">
+                            <ol>
+                                <li><strong>尺を先に固める。</strong> ポーズは NLA で Action 3本（振り上げ／被弾／切断後）をつないだ。切断の表示・火花・発光は Action に入っていないので、尺を動かしたらオブジェクト側のキーも同じ差分だけずらす。</li>
+                                <li><strong>リグは切らない。</strong> ブーリアンでボーンを割ると復旧できない。一体ベイクしたメッシュを二等分し、切れフレームで元パーツを隠し、破片メッシュを出す。切り株だけ残りのリグに付ける。</li>
+                                <li><strong>火花は一度に全部出さない。</strong> 袋エンプティ＋ベベル付きカーブ（筋）＋先端の粒。約4割は切れ直後、残りは遅れと伸びを変えて密度を散らした。</li>
+                                <li><strong>ウェブは手首と足場だけ動かす。</strong> 始点を変形ボーンの手首 Empty、終点を世界固定の足場 Empty にフック。<code>bevel_factor_end</code> で射出。IKテールを始点にすると糸が腕からずれる。</li>
+                                <li><strong>手IKは常に「支点→体」の直線上。</strong> 糸が腕の延長になるようにした。歩きアクションは IK とぶつかるのでこのショットでは使わない。</li>
+                                <li><strong>縦カメラは本体ではなくリグの Y で寄る。</strong> 26mm。見る先は胸あたりの Aim。横はカメラを動かすよりシーンマーカーをずらしてカット割りする。</li>
+                                <li><strong>スラスターは加速の数Fだけ。</strong> 切断キーとは独立に、40F / 135F / 156F / 165F 付近だけ点ける。</li>
+                                <li><strong>この環境の 3.2.2 は VSE mixdown が無音になる。</strong> 仕上げは Blender の外で、ffmpeg に MIX を載せた。</li>
+                            </ol>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-links mb-4">
+                                <a href="https://www.youtube.com/shorts/YGdowI_XNU8" class="btn btn-outline-danger w-100 mb-2" target="_blank" rel="noopener">
+                                    <i class="bi bi-youtube me-2"></i>Ground Battle
+                                </a>
+                                <a href="https://www.youtube.com/shorts/VFIDVOYgz9k" class="btn btn-outline-danger w-100 mb-2" target="_blank" rel="noopener">
+                                    <i class="bi bi-youtube me-2"></i>Web-Swing
+                                </a>
+                                <p class="small mb-1 mt-3"><strong>Format</strong></p>
+                                <ul class="small">
+                                    <li>24fps / EEVEE</li>
+                                    <li>9:16　1080×1920</li>
+                                    <li>16:9　1920×1080</li>
+                                </ul>
+                                <p class="small mb-1"><strong>Camera</strong></p>
+                                <ul class="small">
+                                    <li>Ground Battle — 40mm、DOF off、handheld</li>
+                                    <li>Web-Swing — 26mm tracking / 21–40mm multi-cam</li>
+                                    <li>手ブレは Noise ではなく毎Fキー</li>
+                                </ul>
+                                <p class="small mb-1"><strong>Audio</strong></p>
+                                <p class="small text-muted mb-0">OtoLogic（<a href="https://otologic.jp" target="_blank" rel="noopener">otologic.jp</a>）CC BY 4.0。公式音源は未使用。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="cg-note mb-0">個人制作のファンワークです。機動戦士ガンダム、スパイダーマンおよび関連する権利はそれぞれの権利者に帰属します。版権元とは無関係です。</p>
+                </div>
+            `
+        },
         personastamp: {
             title: "PersonaStamp Studio",
             description: `
@@ -1660,6 +2022,8 @@
             image: "images/DataAnalysis.png"
         }
     };
+    projectsData.gundam = projectsData.actioncut;
+    projectsData.spiderman = projectsData.actioncut;
 
     // モーダル関連の処理
     document.addEventListener('DOMContentLoaded', function() {
@@ -1667,20 +2031,52 @@
         const modal = new bootstrap.Modal(document.getElementById('projectModal'));
         const modalTitle = document.getElementById('projectModalLabel');
         const modalContent = document.getElementById('modalContent');
+        const projectAliases = { gundam: 'actioncut', spiderman: 'actioncut' };
         
         projectCards.forEach(card => {
             card.addEventListener('click', function() {
-                const projectId = this.getAttribute('data-project');
+                const projectId = projectAliases[this.getAttribute('data-project')] || this.getAttribute('data-project');
                 const project = projectsData[projectId];
                 
                 if (project) {
                     modalTitle.textContent = project.title;
-                modalContent.innerHTML = `
-                        <img src="${project.image}" class="project-img mb-3" alt="${project.title}" style="width: 100%; max-width: 400px; border-radius: 15px;">
-                        ${project.description}
-                    `;
+                    const hero = project.skipHeroImage ? '' : `<img src="${project.image}" class="project-img mb-3" alt="${project.title}" style="width: 100%; max-width: 400px; border-radius: 15px;">`;
+                    modalContent.innerHTML = `${hero}${project.description}`;
                     modal.show();
                 }
+            });
+        });
+
+        const openRaw = new URLSearchParams(window.location.search).get('open');
+        const openProject = projectAliases[openRaw] || openRaw;
+        if (openProject) {
+            const openCard = document.querySelector('.project-card[data-project="' + openProject + '"]');
+            if (openCard) {
+                openCard.click();
+            }
+        }
+
+        document.getElementById('projectModal').addEventListener('shown.bs.modal', function () {
+            modalContent.querySelectorAll('.cg-yt[data-yt]').forEach(function (slot) {
+                if (slot.querySelector('iframe')) return;
+                const id = slot.getAttribute('data-yt');
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.title = slot.getAttribute('data-title') || '';
+                iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(id) + '?feature=oembed';
+                slot.appendChild(iframe);
+            });
+        });
+
+        document.getElementById('projectModal').addEventListener('hidden.bs.modal', function () {
+            modalContent.querySelectorAll('iframe').forEach(function (iframe) {
+                iframe.remove();
+            });
+            modalContent.querySelectorAll('video').forEach(function (video) {
+                video.pause();
             });
         });
         
